@@ -153,10 +153,12 @@ textarea {
 .note .bi-file-earmark-plus {
   top: 40px;
 }
+.note .bi-x-lg:hover {
+  color: red;
+}
 
-.note .bi-x-lg:hover,
 .note .bi-file-earmark-plus:hover {
-  color: #fff;
+  color: green;
 }
 
 .note.fixed {
@@ -164,4 +166,7 @@ textarea {
 }
 .note.fixed > .bi-pin {
   opacity: 1;
+}
+.bi-pin:hover {
+  color: orange;
 }

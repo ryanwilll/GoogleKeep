@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -14,23 +14,26 @@
 
     <!--Boostrap Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="./css/iconpage.png" type="image/x-icon">
+    <title>Anotações</title>
 </head>
 
 <body>
     <header>
         <h1>Notas</h1>
-        <div id="search-container">
-            <input type="text" id="search-input" placeholder="Procurar uma nota"><i class="bi bi-search"></i>
+        <!-- <div id="search-container">
+            <input type="text" id="search-input" placeholder="🔎 Procurar uma nota">
+        </div> -->
+        <div id="add-note-container">
+            <input type="text" id="note-content" placeholder="O que deseja anotar?">
+            <button class="add-note"><i class="bi bi-plus-lg"></i></button>
         </div>
         <button id="export-notes">
-            Exportas XLSX (Excel) <i class="bi bi-download"></i>
+            Exportar XLSX (Excel) <i class="bi bi-download"></i>
         </button>
+
     </header>
-    <div id="add-note-container">
-        <input type="text" id="note-content" placeholder="O que deseja anotar?">
-        <button class="add-note"><i class="bi bi-plus-lg"></i></button>
-    </div>
+
     <div id="notes-container">
 
     </div>
