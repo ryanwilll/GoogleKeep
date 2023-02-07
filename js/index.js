@@ -81,7 +81,6 @@ function createNote(id, content, fixed) {
     updateNote(id, noteContent);
   });
 
-  addNotesBtn.addEventListener("click", () => addNote());
 
   searchInput.addEventListener("keyup", (e) => {
     const search = e.target.value;
