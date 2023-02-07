@@ -3,6 +3,7 @@
 const notesContainer = document.querySelector("#notes-container");
 const notesInput = document.querySelector("#note-content");
 const addNotesBtn = document.querySelector(".add-note");
+const searchInput = document.querySelector("#search-input");
 
 //Function
 function showNotes() {
@@ -16,6 +17,15 @@ function showNotes() {
 
 function cleanNotes() {
   notesContainer.replaceChildren([]);
+}
+
+function updateNote(id, newContent) {
+  const notes = getNotes();
+  const targetNote = notes.filter((note) => note.id === id)[0];
+
+  targetNote.content = newContent;
+
+  saveNotes(notes);
 }
 
 function addNote() {
@@ -66,6 +76,18 @@ function createNote(id, content, fixed) {
   }
 
   //Eventos do Elemento
+  elements.querySelector("textarea").addEventListener("keyup", () => {
+    const noteContent = elements.querySelector("textarea").value;
+    updateNote(id, noteContent);
+  });
+
+  addNotesBtn.addEventListener("click", () => addNote());
+
+  searchInput.addEventListener("keyup", (e) => {
+    const search = e.target.value;
+
+    searchNotes(search);
+  });
   elements.querySelector(".bi-pin").addEventListener("click", () => {
     toogleFixNote(id);
   });
@@ -112,6 +134,23 @@ function deleteNotes(id, elements) {
   saveNotes(notes);
 
   notesContainer.removeChild(elements);
+}
+
+function searchNotes(search) {
+  const searchResults = getNotes().filter((note) =>
+    note.content.includes(search)
+  );
+
+  if (search !== "") {
+    cleanNotes();
+
+    searchResults.forEach((note) => {
+      const noteElement = createNote(note.id, note.content);
+      notesContainer.appendChild(noteElement);
+    });
+
+    return;
+  }
 }
 
 function toogleFixNote(id) {
