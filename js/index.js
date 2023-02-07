@@ -73,6 +73,7 @@ function createNote(id, content, fixed) {
 
   if (fixed) {
     elements.classList.add("fixed");
+    pinIcon.classList.add("color")
   }
 
   //Eventos do Elemento

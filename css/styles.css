@@ -5,8 +5,12 @@
   font-family: Helvetica;
 }
 
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:transparent;border-radius:0px}
+::-webkit-scrollbar-thumb{background:#525053;border-radius:0px}
 body {
   background-color: #202124;
+  overflow-x: hidden;
 }
 
 /* Cabeçalho */
@@ -16,6 +20,8 @@ header {
   color: #fff;
   display: flex;
   align-items: center;
+  padding: 2rem 0;
+  gap: 1rem;
   justify-content: space-around;
 }
 
@@ -37,22 +43,9 @@ header {
 
 #search-input::placeholder {
   color: #ddd;
+  text-align: center;
 }
 
-#export-notes {
-  background-color: #333;
-  border: 2px solid #fff;
-  color: #fff;
-  border-radius: 4px;
-  padding: 5px 15px;
-  cursor: pointer;
-  transition: 0.4s ease-in-out;
-}
-
-#export-notes:hover {
-  background-color: #fff;
-  color: #333;
-}
 
 /* Nova Nota */
 
@@ -60,7 +53,7 @@ header {
   display: flex;
   justify-content: space-between;
   width: 500px;
-  margin: 1rem auto 0;
+  margin: 2rem auto 0;
   gap: 1rem;
 }
 
@@ -149,24 +142,51 @@ textarea {
   color: #555;
   cursor: pointer;
   opacity: 0;
+  border-radius: 5px;
 }
+
 .note .bi-file-earmark-plus {
   top: 40px;
 }
 .note .bi-x-lg:hover {
   color: red;
+  background-color: #333;
 }
 
 .note .bi-file-earmark-plus:hover {
   color: green;
+  background-color: #333;
 }
 
 .note.fixed {
   background-color: #3c3c3f;
+}
+.color{
+  color: rgb(19, 224, 19);
+  background-color: #555;
 }
 .note.fixed > .bi-pin {
   opacity: 1;
 }
 .bi-pin:hover {
   color: orange;
+}
+
+
+@media (min-width: 320px) and (max-width:880px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
+  #search-input{
+    max-width: 80vw;
+  }
+ #add-note-container{
+    max-width: 90vw;
+  }
+  #notes-container{
+    width: 100vw;
+    justify-content: space-around
+  }
+ 
 }
