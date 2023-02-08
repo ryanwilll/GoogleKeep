@@ -86,6 +86,10 @@ function createNote(id, content, fixed) {
   searchInput.addEventListener("keyup", (e) => {
     const search = e.target.value;
 
+    if (search === ""){
+      showNotes();
+      return
+    }
     searchNotes(search);
   });
   elements.querySelector(".bi-pin").addEventListener("click", () => {
