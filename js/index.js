@@ -158,8 +158,9 @@ function deleteNotes(id, elements) {
 }
 
 function searchNotes(search) {
+  search = search.toLowerCase();
   const searchResults = getNotes().filter((note) =>
-    note.content.includes(search)
+    note.content.toLowerCase().includes(search)
   );
 
   if (search !== "") {
@@ -173,6 +174,7 @@ function searchNotes(search) {
     return;
   }
 }
+
 
 function toogleFixNote(id) {
   const notes = getNotes();
