@@ -5,6 +5,20 @@ const notesInput = document.querySelector("#note-content");
 const addNotesBtn = document.querySelector(".add-note");
 const searchInput = document.querySelector("#search-input");
 
+const debounce = function(func, wait, immediate) {
+  let timeout;
+  return function(...args) {
+    const context = this;
+    const later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
 //Function
 function showNotes() {
   cleanNotes();
@@ -83,7 +97,8 @@ function createNote(id, content, fixed) {
   });
 
 
-  searchInput.addEventListener("keyup", (e) => {
+  searchInput.addEventListener("input", debounce(function(e) {
+
     const search = e.target.value;
 
     if (search === ""){
@@ -91,7 +106,9 @@ function createNote(id, content, fixed) {
       return
     }
     searchNotes(search);
-  });
+
+  }, 1000));
+
   elements.querySelector(".bi-pin").addEventListener("click", () => {
     toogleFixNote(id);
   });
@@ -182,7 +199,11 @@ function saveNotes(notes) {
 //Events
 
 addNotesBtn.addEventListener("click", () => addNote());
+notesInput.addEventListener("keyup", event => {
+  if (event.key === "Enter") {
+    addNote();
+  }
+});
 
-//Inicialização Auto
 
 showNotes();
