@@ -5,9 +5,17 @@
   font-family: Helvetica;
 }
 
-::-webkit-scrollbar{width:10px}
-::-webkit-scrollbar-track{background:transparent;border-radius:0px}
-::-webkit-scrollbar-thumb{background:#525053;border-radius:0px}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #525053;
+  border-radius: 0px;
+}
 body {
   background-color: #202124;
   overflow-x: hidden;
@@ -45,7 +53,6 @@ header {
   color: #ddd;
   text-align: center;
 }
-
 
 /* Nova Nota */
 
@@ -87,7 +94,7 @@ header {
 /*Notes*/
 #notes-container {
   display: flex;
-  justify-content: center  ;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 2rem;
   gap: 2rem;
@@ -110,6 +117,7 @@ textarea {
   border: none;
   height: 100%;
   outline: none;
+  width: 90%;
 }
 
 .note .bi-pin {
@@ -162,7 +170,7 @@ textarea {
 .note.fixed {
   background-color: #3c3c3f;
 }
-.color{
+.color {
   color: rgb(19, 224, 19);
   background-color: #555;
 }
@@ -173,21 +181,19 @@ textarea {
   color: orange;
 }
 
-
-@media (min-width: 320px) and (max-width:880px) {
+@media (min-width: 320px) and (max-width: 880px) {
   header {
     flex-direction: column;
     justify-content: center;
   }
-  #search-input{
+  #search-input {
     max-width: 80vw;
   }
- #add-note-container{
+  #add-note-container {
     max-width: 90vw;
   }
-  #notes-container{
+  #notes-container {
     width: 100vw;
-    justify-content: space-around
+    justify-content: space-around;
   }
- 
 }
