@@ -5,9 +5,9 @@ const notesInput = document.querySelector("#note-content");
 const addNotesBtn = document.querySelector(".add-note");
 const searchInput = document.querySelector("#search-input");
 
-const debounce = function(func, wait, immediate) {
+const debounce = function (func, wait, immediate) {
   let timeout;
-  return function(...args) {
+  return function (...args) {
     const context = this;
     const later = function () {
       timeout = null;
@@ -87,7 +87,7 @@ function createNote(id, content, fixed) {
 
   if (fixed) {
     elements.classList.add("fixed");
-    pinIcon.classList.add("color")
+    pinIcon.classList.add("color");
   }
 
   //Eventos do Elemento
@@ -96,18 +96,18 @@ function createNote(id, content, fixed) {
     updateNote(id, noteContent);
   });
 
+  searchInput.addEventListener(
+    "input",
+    debounce(function (e) {
+      const search = e.target.value;
 
-  searchInput.addEventListener("input", debounce(function(e) {
-
-    const search = e.target.value;
-
-    if (search === ""){
-      showNotes();
-      return
-    }
-    searchNotes(search);
-
-  }, 1000));
+      if (search === "") {
+        showNotes();
+        return;
+      }
+      searchNotes(search);
+    }, 1000)
+  );
 
   elements.querySelector(".bi-pin").addEventListener("click", () => {
     toogleFixNote(id);
@@ -175,14 +175,12 @@ function searchNotes(search) {
   }
 }
 
-
 function toogleFixNote(id) {
   const notes = getNotes();
 
   const targetNote = notes.filter((note) => note.id === id)[0];
 
   targetNote.fixed = !targetNote.fixed;
-  console.log(notes);
   saveNotes(notes);
   showNotes();
 }
@@ -201,11 +199,10 @@ function saveNotes(notes) {
 //Events
 
 addNotesBtn.addEventListener("click", () => addNote());
-notesInput.addEventListener("keyup", event => {
+notesInput.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     addNote();
   }
 });
-
 
 showNotes();
